@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS 'company'(
     address varchar(150),
     telephone varchar(25) NOT NULL,
     accountNumber varchar(30) NOT NULL,
-    description varchar(80) ,
+    description varchar(250) ,
 
 );
 

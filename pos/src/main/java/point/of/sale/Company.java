@@ -1,6 +1,7 @@
 package point.of.sale;
 
 import java.math.BigInteger;
+import java.util.regex.*;
 
 public class Company {
 
@@ -81,5 +82,16 @@ public class Company {
     @Override
     public String toString(){
         return  "";
+    }
+
+    public boolean isEmailValid(String validMail) {
+        String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(validMail);
+        return matcher.matches();
+    }
+
+    public boolean isValidDescription(String description) {
+        return description.length()<=250;
     }
 }
