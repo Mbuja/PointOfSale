@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.regex.*;
 
 public class Company {
-
+    private int id;
     private String name;
     private String email;
     private String address;
@@ -24,6 +24,17 @@ public class Company {
     }
 
     public Company(String name,String email,String address,String telephoneNumber,String accountNumber,String description){
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+        this.accountNumber = accountNumber;
+        this.description = description;
+        this.id = -1;
+    }
+
+    public Company(int id,String name,String email,String address,String telephoneNumber,String accountNumber,String description){
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
@@ -81,7 +92,11 @@ public class Company {
 
     @Override
     public String toString(){
-        return  "";
+
+        return  "Company: " + name +"\n," +
+                "Email: " + email + "\n,"+
+                "Address: "+ address + "\n,"+
+                "Telephone Number" + telephoneNumber +"\n,";
     }
 
     public boolean isEmailValid(String validMail) {
