@@ -36,18 +36,23 @@ public class CompanyTest{
 
     @Test
     public void setNameTest(){
+        String name = company.getName();
+        assertTrue(company.isValidName(name));
+        assertFalse(company.isValidName(""));
 
     }
 
-
     @Test
     public void invalidPhoneNumberTest(){
-
+        String telNo = "@90999899";
+        assertFalse(company.isPhoneNumberValid( "@90999899"));
     }
 
     @Test
     public void validPhoneNumberTest(){
+        System.out.println(company.getTelephoneNumber());
 
+        assertTrue(company.isPhoneNumberValid(company.getTelephoneNumber()));
     }
 
     @Test
@@ -65,7 +70,6 @@ public class CompanyTest{
     @Test
     public void validDescriptionTest(){
         assertTrue(company.isValidDescription(company.getDescription()));
-
     }
 
 }

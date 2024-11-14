@@ -94,4 +94,15 @@ public class Company {
     public boolean isValidDescription(String description) {
         return description.length()<=250;
     }
+
+    public boolean isValidName(String name) {
+        return name.length()>1;
+    }
+
+    public boolean isPhoneNumberValid(String telephoneNumber) {
+        String regex = "^(\\+\\d{1,3}[- ]?)?\\(?\\d{3}\\)?[- ]?\\d{3}[- ]?\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(telephoneNumber);
+        return matcher.matches();
+    }
 }
