@@ -16,6 +16,15 @@ public class DatabaseManager {
     private Connection connection;
 
 
+    public DatabaseManager(){
+        try{
+            connect();
+        }catch(SQLException e){
+            //Possible connection error
+            e.printStackTrace();
+        }
+    }
+
     public void connect() throws SQLException {
         connection = DriverManager.getConnection(DISK_DB_URL);
     }

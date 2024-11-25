@@ -7,7 +7,12 @@ import com.google.gson.Gson;
 
 public class Handler {
     DatabaseManager dbManager;
+
+    public Handler(){
+        dbManager = new DatabaseManager();
+    }
     public void getCompany(Context context){
+        System.out.println("Running handler");
         String name = context.pathParam("name");
         Company company = dbManager.getCompanyByName(name);
         Gson gson = new Gson();
