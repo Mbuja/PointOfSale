@@ -81,6 +81,6 @@ public class CompanyDO {
 
 
     public Company toCompanyObject(){
-        return new Company(this.name,this.email,this.address,this.telephoneNumber,this.accountNumber,this.description);
+        return new Company(this.id,this.name,this.email,this.address,this.telephoneNumber,this.accountNumber,this.description);
     }
 }

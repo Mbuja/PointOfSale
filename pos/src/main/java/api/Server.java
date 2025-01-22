@@ -1,7 +1,17 @@
 package api;
 
 import io.javalin.Javalin;
+import io.javalin.openapi.plugin.OpenApiPlugin;
+import io.javalin.openapi.plugin.redoc.ReDocConfiguration;
+import io.javalin.openapi.plugin.redoc.ReDocPlugin;
+import io.javalin.openapi.plugin.swagger.SwaggerConfiguration;
+import io.javalin.openapi.plugin.swagger.SwaggerPlugin;
+import io.javalin.openapi.OpenApiInfo;
+import io.javalin.openapi.plugin.DefinitionConfiguration;
 
+import static io.javalin.apibuilder.ApiBuilder.*;
+
+/*Http server for serving endpoints and configuring javalin webserver socket */
 public class Server {
     private Javalin server;
     private int DEFAULT_PORT = 5001;
@@ -17,9 +27,29 @@ public class Server {
         config();
     }
 
+
+
+    @SuppressWarnings("deprecation")
     private void config(){
-        //Configuration  of server,NB Javalin  6 config different from Javalin 5
-        this.server = Javalin.create();
+        //Create OpenApi config
+        this.server  =Javalin.create( config -> {
+            config.registerPlugin(new OpenApiPlugin(pluginConfig -> {
+                pluginConfig.withDocumentationPath("/openapi")
+                .withDefinitionConfiguration((version, definition) -> {
+                    definition.withOpenApiInfo (info -> {
+                    info.setTitle("Documenation 1.1");
+                    info.setDescription("Api docs");
+                    info.setVersion("1.1");
+                });
+            });
+            }));
+            SwaggerConfiguration swagConfig = new SwaggerConfiguration();
+            swagConfig.setUiPath("swaggers");
+            config.registerPlugin(new SwaggerPlugin(swaggerConfig ->{
+                swaggerConfig.setUiPath("/docs");
+            }));
+            config.registerPlugin(new ReDocPlugin());
+        });
         handler = new Handler();
         server.get("/company/{name}",context->handler.getCompany(context));
     }

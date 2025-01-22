@@ -1,0 +1,18 @@
+openapi: '3.0.3'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://localhost:5001
+paths:
+  /company/{name}:
+    get:
+      tags:
+        - /company
+      summary: Find company by company name
+      description: Returns list of companies with said name
+      
+      responses:
+        '200':
+          description: OK
+  
