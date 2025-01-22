@@ -17,7 +17,7 @@ public class Handler {
         dbManager = new DatabaseManager();
     }
     @OpenApi(
-        summary = "Get Company Details based on compnay name",
+        summary = "Get Company Details based on name of company",
         operationId = "getCompany",
         path = "/company/{name}",
         methods = HttpMethod.GET,

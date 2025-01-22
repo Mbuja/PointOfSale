@@ -37,9 +37,9 @@ public class Server {
                 pluginConfig.withDocumentationPath("/openapi")
                 .withDefinitionConfiguration((version, definition) -> {
                     definition.withOpenApiInfo (info -> {
-                    info.setTitle("Documenation 1.1");
-                    info.setDescription("Api docs");
-                    info.setVersion("1.1");
+                    info.setTitle("Point Of Sale API");
+                    info.setDescription("Documentation for point of sale api ");
+                    info.setVersion("1.0");
                 });
             });
             }));
