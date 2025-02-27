@@ -20,7 +20,6 @@ public class Server {
         Server server = new Server();
         server.start();
 
-
     }
 
     public Server(){

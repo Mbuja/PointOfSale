@@ -36,4 +36,24 @@ public class Handler {
         context.status(200);
         context.json(companyJson);
     }
+
+
+
+    @OpenApi(
+        summary = "Returns list of companies stored in database",
+        operationId = "listCompanies",
+        path = "/companies",
+        tags = {"List Companies"},
+        methods = HttpMethod.GET,
+        responses = {
+            @OpenApiResponse (status = "200",content = {
+                @OpenApiContent (from = Company[].class )
+            })
+        }
+    )
+    public void listCompanies(Context context){
+
+    }
+
+    
 }
