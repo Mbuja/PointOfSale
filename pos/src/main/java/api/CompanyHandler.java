@@ -10,10 +10,10 @@ import io.javalin.openapi.OpenApiContent;
 import point.of.sale.Company;
 import com.google.gson.Gson;
 
-public class Handler {
+public class CompanyHandler {
     private DatabaseManager dbManager;
 
-    public Handler(){
+    public CompanyHandler(){
         dbManager = new DatabaseManager();
     }
     @OpenApi(

@@ -15,7 +15,7 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 public class Server {
     private Javalin server;
     private int DEFAULT_PORT = 5001;
-    private Handler handler;
+    private CompanyHandler handler;
     public static void main(String [] args){
         Server server = new Server();
         server.start();
@@ -49,7 +49,7 @@ public class Server {
             }));
             config.registerPlugin(new ReDocPlugin());
         });
-        handler = new Handler();
+        handler = new CompanyHandler();
         server.get("/company/{name}",context->handler.getCompany(context));
     }
 
