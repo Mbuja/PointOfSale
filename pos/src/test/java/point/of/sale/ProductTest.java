@@ -16,8 +16,9 @@ public class ProductTest {
         assertEquals(89.0, product.getPrice());
     
 
-    }  
-    
+    } 
+     
+    @Test
     public void invalidDescriptionTest(){
         String invalidDescription = "At [Your Company Name], we are dedicated to innovating solutions that empower businesses and individuals in a " +
         "rapidly changing digital world. Specializing in software development, data analytics," +
