@@ -1,13 +1,18 @@
 package api;
 import databaseManagement.DatabaseManager;
-import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.openapi.HttpMethod;
 import io.javalin.openapi.OpenApi;
 import io.javalin.openapi.OpenApiParam;
 import io.javalin.openapi.OpenApiResponse;
+import net.lemnik.eodsql.QueryTool;
+import orm.DAI.CompanyDAI;
+import orm.DAO.CompanyDO;
 import io.javalin.openapi.OpenApiContent;
 import point.of.sale.Company;
+
+import java.sql.SQLException;
+
 import com.google.gson.Gson;
 
 public class CompanyHandler {
@@ -16,6 +21,7 @@ public class CompanyHandler {
     public CompanyHandler(){
         dbManager = new DatabaseManager();
     }
+
     @OpenApi(
         summary = "Get Company Details based on name of company",
         operationId = "getCompany",
@@ -30,11 +36,21 @@ public class CompanyHandler {
     public void getCompany(Context context){
         System.out.println("Running handler");
         String name = context.pathParam("name");
-        Company company = dbManager.getCompanyByName(name);
-        Gson gson = new Gson();
-        String companyJson = gson.toJson(company);
-        context.status(200);
-        context.json(companyJson);
+        try{
+            //Company company = dbManager.getCompanyByName(name);
+            if(isConnected()){
+                CompanyDAI companies = QueryTool.getQuery(dbManager.getConnection(), CompanyDAI.class);
+                CompanyDO com = companies.getCompanyByName(name);
+                Company company = com.toCompanyObject();
+                Gson gson = new Gson();
+                String companyJson = gson.toJson(company);
+                context.status(200);
+                context.json(companyJson);
+            }
+        }catch(SQLException e){
+            System.out.println("Connection to database failed!!");
+            e.printStackTrace();
+        }
     }
 
 
@@ -55,5 +71,8 @@ public class CompanyHandler {
 
     }
 
-    
+    private boolean isConnected() throws SQLException{
+        return (!dbManager.getConnection().isClosed() || dbManager.getConnection()!=null);
+    }
+
 }

@@ -12,8 +12,11 @@ CREATE TABLE IF NOT EXISTS 'product'(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(150),
     company VARCHAR(150),
-    FOREIGN KEY(company) REFERENCES company(name) ON DELETE CASCADE,
-    price DOUBLE NOT NULL,
-    barcode VARCHAR(100)
+    price REAL NOT NULL,
+    product_no VARCHAR(100),
+    serial_no VARCHAR(50),
+    description VARCHAR(250),
+    FOREIGN KEY(company) REFERENCES company(name) ON DELETE CASCADE
+   
 );
 

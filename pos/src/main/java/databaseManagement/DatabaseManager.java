@@ -32,6 +32,7 @@ public class DatabaseManager {
     public Connection getConnection() {
         return connection;
     }
+    //For testing purposes
     public Company getCompanyByName(String name){
         try {
             if (!connection.isClosed() || connection != null) {
