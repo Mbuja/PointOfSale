@@ -7,8 +7,8 @@ public class Product {
     private String category;
     private double price;
     private String description;
-    private String companyId;
-    private String serialNo;
+    private String company;
+    private String serial_no;
     
 
     //Still to pass through validators
@@ -17,9 +17,9 @@ public class Product {
         this.name = name;
         this.category = category;
         this.price= price;
-        this.companyId = companyId;
+        this.company = companyId;
         this.description = description;
-        this.serialNo = serialNo;
+        this.serial_no = serialNo;
     }
 
     public void setId(String id){
@@ -70,19 +70,19 @@ public class Product {
     }
 
     public void setCompanyId(String supplierId){
-        this.companyId = supplierId;
+        this.company = supplierId;
     }
 
     public String getCompanyId(){
-        return companyId;
+        return company;
     }
 
     public void setSerialNo(String serialNo){
-        this.serialNo = serialNo;
+        this.serial_no = serialNo;
     }
 
     public String getSerialNo(){
-        return serialNo;
+        return serial_no;
     }
 
     public boolean isValidDescription(String description) {

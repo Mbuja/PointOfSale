@@ -59,7 +59,7 @@ public class CompanyHandler {
         summary = "Returns list of companies stored in database",
         operationId = "listCompanies",
         path = "/companies",
-        tags = {"List Companies"},
+        tags = {"Company"},
         methods = HttpMethod.GET,
         responses = {
             @OpenApiResponse (status = "200",content = {

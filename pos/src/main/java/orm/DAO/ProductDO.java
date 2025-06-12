@@ -4,11 +4,11 @@ public class ProductDO {
 
     private String id;
     private String name;
-    private String category;
+    private String company;
     private double price;
     private String description;
-    private String companyId;
-    private String serialNo;
+    private String product_no;
+    private String serial_no;
 
 
     public ProductDO(){
@@ -38,12 +38,12 @@ public class ProductDO {
         this.description = description;
     }
     
-    public void  setCategory(String category){
-        this.category = category;
+    public void  setProductNo(String productNo){
+        this.product_no = productNo;
     }
 
-    public String getCategory(){
-        return this.category;
+    public String getProductNo(){
+        return this.product_no;
     }
 
     public void setPrice(double price){
@@ -55,19 +55,19 @@ public class ProductDO {
     }
 
     public String getCompany(){
-        return this.companyId;
+        return this.company;
     }
 
     public void setCompany(String company){
-        this.companyId = company;
+        this.company = company;
     }
 
     //Validation required for serial no?
     public void setSerialNo(String serial){
-        this.serialNo = serial;
+        this.serial_no = serial;
     }
 
     public String getSerialNo(){
-        return this.serialNo;
+        return this.serial_no;
     }
 }

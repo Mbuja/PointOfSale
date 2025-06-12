@@ -15,7 +15,8 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 public class Server {
     private Javalin server;
     private int DEFAULT_PORT = 5001;
-    private CompanyHandler handler;
+    private CompanyHandler companyHandler;
+    private ProductHandler productHandler;
     public static void main(String [] args){
         Server server = new Server();
         server.start();
@@ -49,8 +50,10 @@ public class Server {
             }));
             config.registerPlugin(new ReDocPlugin());
         });
-        handler = new CompanyHandler();
-        server.get("/company/{name}",context->handler.getCompany(context));
+        companyHandler = new CompanyHandler();
+        productHandler = new ProductHandler();
+        server.get("/company/{name}",context->companyHandler.getCompany(context));
+        server.get("/product/{product_no}",context->productHandler.getProductById(context));
     }
 
     public void start(){
