@@ -53,6 +53,7 @@ public class Server {
         companyHandler = new CompanyHandler();
         productHandler = new ProductHandler();
         server.get("/company/{name}",context->companyHandler.getCompany(context));
+        server.get("/companies",context->companyHandler.listCompanies(context));
         server.get("/product/{product_no}",context->productHandler.getProductById(context));
     }
 

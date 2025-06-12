@@ -1,5 +1,5 @@
 
-# PointOfSale
+# Bhadala api
 
 A point of sale REST api meant to be integrated with numerous UI as required
 

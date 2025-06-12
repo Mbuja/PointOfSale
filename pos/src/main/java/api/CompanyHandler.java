@@ -12,6 +12,7 @@ import io.javalin.openapi.OpenApiContent;
 import point.of.sale.Company;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
@@ -68,7 +69,19 @@ public class CompanyHandler {
         }
     )
     public void listCompanies(Context context){
-
+        try{
+            if(isConnected()){
+                CompanyDAI companiesDai = QueryTool.getQuery(dbManager.getConnection(),CompanyDAI.class);
+                ArrayList<CompanyDO> companies = companiesDai.getAllCompanies();
+                Gson gson = new Gson();
+                String companiesJson = gson.toJson(companies);
+                context.status(200);
+                context.json(companiesJson);
+            }
+        }catch(SQLException e){
+            System.out.println("Failed to connect to database");
+            e.printStackTrace();
+        }
     }
 
     private boolean isConnected() throws SQLException{

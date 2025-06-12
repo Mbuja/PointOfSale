@@ -1,6 +1,7 @@
 package api;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import databaseManagement.DatabaseManager;
 import io.javalin.openapi.HttpMethod;
@@ -50,6 +51,23 @@ public class ProductHandler {
             System.out.println("Connection to database failed");
             e.printStackTrace();
         }
+    }
+    @OpenApi(
+        summary = "Returns list of products belonging to a specific company",
+        operationId = "listProducts",
+        path = "/products/{company}",
+        methods = HttpMethod.GET,
+        responses = {
+            @OpenApiResponse (status = "200",content = {
+                @OpenApiContent(from = Product[].class)
+            })
+        },
+        tags  = {"Product"},
+        pathParams = {@OpenApiParam(name = "name",type = String.class,description = "Name to company")}
+            
+        )
+    public void getProductsByCompany(){
+        System.out.println("Getting products by company");
     }
 
     private boolean isConnected() throws SQLException{

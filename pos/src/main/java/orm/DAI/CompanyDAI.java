@@ -5,6 +5,7 @@ import net.lemnik.eodsql.Select;
 import net.lemnik.eodsql.Update;
 import orm.DAO.CompanyDO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface CompanyDAI extends BaseQuery {
@@ -21,5 +22,5 @@ public interface CompanyDAI extends BaseQuery {
     CompanyDO getCompanyById(int id);
 
     @Select("SELECT * FROM company")
-    List<CompanyDO> getAllCompanies();
+    ArrayList<CompanyDO> getAllCompanies();
 }
