@@ -35,6 +35,8 @@ public class ProductHandler {
             @OpenApiResponse(status = "200",content = {@OpenApiContent (from = Product.class)})
         }
     )
+
+    
     public void getProductById(Context context){
         System.out.println("Getting product by product no");
         String productNo = context.pathParam("product_no");

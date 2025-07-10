@@ -22,6 +22,10 @@ public class Product {
         this.serial_no = serialNo;
     }
 
+    public Product() {
+        //TODO Auto-generated constructor stub For ORM mapping
+    }
+
     public void setId(String id){
         this.id = id;
 

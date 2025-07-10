@@ -17,6 +17,7 @@ public class Server {
     private int DEFAULT_PORT = 5001;
     private CompanyHandler companyHandler;
     private ProductHandler productHandler;
+    private static OrderHandler OrderHandler;
     public static void main(String [] args){
         Server server = new Server();
         server.start();
@@ -50,14 +51,17 @@ public class Server {
             }));
             config.registerPlugin(new ReDocPlugin());
         });
-        companyHandler = new CompanyHandler();
-        productHandler = new ProductHandler();
+       
         server.get("/company/{name}",context->companyHandler.getCompany(context));
         server.get("/companies",context->companyHandler.listCompanies(context));
         server.get("/product/{product_no}",context->productHandler.getProductById(context));
+        server.get("order/{order_no}",context->OrderHandler.getOrderByNo(context));
     }
 
     public void start(){
+        companyHandler = new CompanyHandler();
+        productHandler = new ProductHandler();
+        OrderHandler = new OrderHandler();
         this.server.start(DEFAULT_PORT);
     }
 

@@ -18,6 +18,16 @@ public class Order {
     private LocalDateTime created;
     private Status status;
     
+
+    public Order(){
+        this.orderNo = "";
+        this.owner = "";
+        this.products = null;
+        this.total = 0.0f;
+        this.created = LocalDateTime.now();
+        this.status = Status.UNPAID; // Default status
+    }
+    
     public Order(String  order,String owner,Map<Product,Integer>products,float total,LocalDateTime date,Status status){
         this.orderNo = order;
         this.owner = owner;
@@ -28,8 +38,7 @@ public class Order {
 
     }
 
-    public void setOrderNo(String order)
-    {
+    public void setOrderNo(String order){
         this.orderNo = order;
     }
 
@@ -76,4 +85,6 @@ public class Order {
     public LocalDateTime getCreationDate(){
         return this.created;
     }
+    
+    
 }

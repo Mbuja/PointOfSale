@@ -70,4 +70,17 @@ public class ProductDO {
     public String getSerialNo(){
         return this.serial_no;
     }
+    
+    @Override
+    public String toString() {
+        return "ProductDO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", product_no='" + product_no + '\'' +
+                ", serial_no='" + serial_no + '\'' +
+                '}';
+    }
 }
